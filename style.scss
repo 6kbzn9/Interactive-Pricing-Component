@@ -82,16 +82,17 @@ body {
   width: 100%;
   border-radius: 1rem;
   background-color: $PricingComponentBG;
-  padding: 3rem 2rem;
-  @include bigger(550px) {
-    padding: 4rem 3rem;
-  }
+  box-shadow: 0 2px 8px rgba($TxtCTABG, 0.2);
+
   &__top {
+    padding: 3rem 1rem;
+    border-bottom: 1px solid $ToggleBG;
     @include bigger(550px) {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-template-areas: "views pricing" "slider slider";
+      grid-template-areas: "views pricing" "slider slider" "plans plans";
       align-items: center;
+      padding: 4rem 3rem;
     }
   }
   &__views {
@@ -104,12 +105,14 @@ body {
     }
   }
   &__slider {
-    width: 100%;
+    width: 90%;
+    margin: 0 auto;
     height: 1rem;
     margin-top: 3rem;
     margin-bottom: 3rem;
     position: relative;
     @include bigger(550px) {
+      width: 100%;
       grid-area: slider;
     }
   }
@@ -173,12 +176,126 @@ body {
       grid-area: pricing;
       justify-content: flex-end;
     }
-
     span {
       color: $TxtCTABG;
       font-weight: 800;
       font-size: 3rem;
       margin-right: 0.5rem;
+    }
+  }
+
+  &__plans {
+    margin-top: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    @include bigger(550px) {
+      grid-area: plans;
+      margin-right: 2rem;
+    }
+  }
+
+  &__check {
+    display: none;
+    &__label {
+      display: inline-block;
+      position: relative;
+      width: 4.5rem;
+      height: 2.5rem;
+      border-radius: 2rem;
+      background-color: $ToggleBG;
+      cursor: pointer;
+      margin: 0 1rem;
+      @include bigger(550px) {
+        margin: 0 1.5rem;
+      }
+      &:hover {
+        background-color: $SliderBG;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+        width: 1.625rem;
+        height: 1.625rem;
+        border-radius: 50%;
+        background-color: $MainBG;
+        transition: 150ms ease-in-out;
+      }
+    }
+    &:checked ~ &__label {
+      background-color: $SliderBG;
+      &::before {
+        left: calc(100% - 1.625rem - 5px);
+      }
+    }
+  }
+  &__monthly,
+  &__yearly {
+    color: $Text;
+    font-size: 1.4rem;
+  }
+  &__discount {
+    color: $DiscountTxt;
+    background-color: $DiscountBG;
+    font-size: 1.325rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+    margin-left: 0.5rem;
+    @include bigger(550px) {
+      margin-left: 1rem;
+    }
+    &--2 {
+      display: none;
+      @include bigger(550px) {
+        display: block;
+      }
+    }
+    &--1 {
+      @include bigger(550px) {
+        display: none;
+      }
+    }
+  }
+  &__bottom {
+    padding: 3rem 1rem;
+    text-align: center;
+    color: $Text;
+    @include bigger(550px) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4rem 3rem;
+    }
+  }
+  &__benefits {
+    margin-bottom: 4rem;
+    @include bigger(550px) {
+      margin-bottom: 0;
+      text-align: left;
+    }
+  }
+  &__benefit {
+    font-size: 1.4rem;
+    img {
+      margin-right: 1rem;
+    }
+    &:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+  &__btn {
+    color: $CTATxt;
+    background-color: $TxtCTABG;
+    text-decoration: none;
+    font-size: 1.4rem;
+    padding: 1rem 3rem;
+    border-radius: 2rem;
+    display: inline-block;
+    &:hover {
+      color: $MainBG;
     }
   }
 }

@@ -2,15 +2,20 @@ const range = document.querySelector("#range");
 const fill = document.querySelector("#fill");
 const views = document.querySelector("#views");
 const price = document.querySelector("#price");
+const check = document.querySelector("#check");
 range.value = "60";
+check.checked = false;
 const setWidth = (width) => {
   fill.style.width = `${width}%`;
 };
 setWidth(50);
 const setPrice = (amount) => {
-  price.textContent = `$${amount}.00`;
+  if (check.checked) {
+    price.textContent = `$${amount - amount * 0.25}.00`;
+  } else {
+    price.textContent = `$${amount}.00`;
+  }
 };
-setPrice(16);
 const setViews = (view) => {
   if (view === 1) {
     views.textContent = `${view}m`;
@@ -18,9 +23,7 @@ const setViews = (view) => {
     views.textContent = `${view}k`;
   }
 };
-setViews(100);
-
-range.addEventListener("input", () => {
+const updateStats = () => {
   switch (range.value) {
     case "20":
       setWidth(0);
@@ -48,4 +51,7 @@ range.addEventListener("input", () => {
       setViews(1);
       break;
   }
-});
+};
+
+range.addEventListener("input", updateStats);
+check.addEventListener("input", updateStats);
