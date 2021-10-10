@@ -92,7 +92,7 @@ body {
       grid-template-columns: 1fr 1fr;
       grid-template-areas: "views pricing" "slider slider" "plans plans";
       align-items: center;
-      padding: 4rem 3rem;
+      padding: 4rem 4.5rem;
     }
   }
   &__views {
@@ -181,6 +181,9 @@ body {
       font-weight: 800;
       font-size: 3rem;
       margin-right: 0.5rem;
+      @include bigger(550px) {
+        font-size: 4rem;
+      }
     }
   }
 
@@ -240,7 +243,7 @@ body {
   &__discount {
     color: $DiscountTxt;
     background-color: $DiscountBG;
-    font-size: 1.325rem;
+    font-size: 1.175rem;
     padding: 0.25rem 0.75rem;
     border-radius: 2rem;
     margin-left: 0.5rem;
@@ -267,7 +270,7 @@ body {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 4rem 3rem;
+      padding: 4rem 4.5rem;
     }
   }
   &__benefits {
